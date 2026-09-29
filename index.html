@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jay Mark Domingo | Inventory Head Analyst</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#F2F4F8; --surface:#FFFFFF; --ink:#1B2438; --muted:#586179; --line:#D5DAE5;
+  --navy:#1F2A44; --navy-ink:#FFFFFF; --accent:#F5C400; --accent-ink:#1B2438;
+  --ok:#1E7A4C; --warn:#A15C00; --bad:#B3261E;
+  --head:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#12182A; --surface:#1B2340; --ink:#EDF0F7; --muted:#A3ACC4; --line:#2E3860;
+    --navy:#0C1122; --accent:#F5C400;
+    --ok:#5FD39A; --warn:#F0B14A; --bad:#FF8A80;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#12182A; --surface:#1B2340; --ink:#EDF0F7; --muted:#A3ACC4; --line:#2E3860;
+  --navy:#0C1122; --accent:#F5C400;
+  --ok:#5FD39A; --warn:#F0B14A; --bad:#FF8A80;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--body);-webkit-text-size-adjust:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:2px}
+.wrap{max-width:960px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--head);font-weight:700;line-height:1.02;margin:0;letter-spacing:.005em}
+h2{font-size:clamp(2rem,6vw,2.75rem);margin-bottom:8px}
+section{padding:56px 0 8px}
+.lead{color:var(--muted);max-width:60ch;margin:0 0 28px}
+
+/* Hero: pallet label */
+.hero{background:var(--navy);color:var(--navy-ink);padding:48px 0 56px}
+.label{
+  background:#fff;color:#1B2438;border-radius:6px;overflow:hidden;
+  border-left:14px solid var(--accent);max-width:640px;
+  box-shadow:0 1px 0 rgba(0,0,0,.2);
+}
+.label-top{padding:22px 24px 8px}
+.label-top .who{font-size:.95rem;color:#586179;margin:0 0 6px}
+.label h1{font-size:clamp(3rem,13vw,5.5rem);color:#1B2438}
+.label .role{font-family:var(--head);font-size:clamp(1.3rem,4.5vw,1.75rem);font-weight:600;margin:8px 0 0;color:#1F2A44}
+.label-mid{display:grid;grid-template-columns:repeat(3,1fr);border-top:2px solid #1B2438;margin-top:18px}
+.label-mid div{padding:12px 24px 12px 14px;border-right:1px solid #D5DAE5}
+.label-mid div:first-child{padding-left:24px}
+.label-mid div:last-child{border-right:0}
+.label-mid b{display:block;font-family:var(--head);font-size:2rem;line-height:1}
+.label-mid span{font-size:.82rem;color:#586179;line-height:1.3;display:block;margin-top:4px}
+.barcode{height:44px;margin:0 24px 18px;background:repeating-linear-gradient(90deg,#1B2438 0 2px,#fff 2px 5px,#1B2438 5px 6px,#fff 6px 10px,#1B2438 10px 13px,#fff 13px 15px)}
+.hero p.intro{max-width:56ch;margin:28px 0 0;color:#D5DAE8;font-size:1.05rem}
+.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px}
+.btn{display:inline-block;padding:12px 20px;font:600 1rem var(--body);text-decoration:none;border-radius:4px;border:2px solid var(--accent)}
+.btn.primary{background:var(--accent);color:var(--accent-ink)}
+.btn.ghost{color:#fff;background:transparent}
+.btn:hover{filter:brightness(1.08)}
+
+/* Nav */
+nav{background:var(--surface);border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);z-index:5}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:0;padding-bottom:0}
+nav a{padding:14px 12px;text-decoration:none;font-weight:500;font-size:.95rem;white-space:nowrap;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+
+/* Workflow */
+.flow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0;border:1px solid var(--line);background:var(--surface)}
+.flow div{padding:18px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);margin:-1px 0 0 -1px}
+.flow h3{font-size:1.4rem;margin-bottom:6px}
+.flow p{margin:0;color:var(--muted);font-size:.95rem}
+
+/* Experience log */
+.log{border:1px solid var(--line);background:var(--surface)}
+.entry{display:grid;grid-template-columns:150px 1fr;gap:0 24px;padding:22px;border-bottom:1px solid var(--line)}
+.entry:last-child{border-bottom:0}
+.when{font-weight:600;font-size:.95rem}
+.when small{display:block;font-weight:400;color:var(--muted)}
+.entry h3{font-size:1.6rem}
+.entry .co{color:var(--muted);margin:2px 0 10px;font-size:.95rem}
+.entry ul{margin:0;padding-left:18px}
+.entry li{margin:3px 0}
+.now{display:inline-block;background:var(--accent);color:var(--accent-ink);font-size:.8rem;font-weight:600;padding:1px 8px;border-radius:3px;margin-left:8px;vertical-align:middle}
+@media (max-width:640px){.entry{grid-template-columns:1fr;gap:6px}}
+
+/* Cycle count demo */
+.count{background:var(--surface);border:1px solid var(--line);padding:20px}
+.count .note{font-size:.88rem;color:var(--muted);margin:0 0 14px}
+.scroll{overflow-x:auto}
+table{width:100%;border-collapse:collapse;min-width:520px}
+th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line);font-size:.95rem}
+th{font-weight:600;color:var(--muted);font-size:.85rem}
+td.num{font-variant-numeric:tabular-nums}
+input[type=number]{width:84px;padding:8px;font:inherit;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:4px}
+.status{font-weight:600}
+.status.ok{color:var(--ok)}.status.over{color:var(--warn)}.status.short{color:var(--bad)}
+.count .row-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:16px}
+.count button{font:600 .95rem var(--body);padding:10px 16px;border-radius:4px;border:2px solid var(--navy);background:var(--navy);color:#fff;cursor:pointer}
+.count button.sec{background:transparent;color:var(--ink);border-color:var(--line)}
+#summary{font-size:.95rem;color:var(--muted)}
+
+/* Skills */
+.chips{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0;list-style:none}
+.chips li{background:var(--surface);border:1px solid var(--line);padding:8px 14px;border-radius:4px;font-weight:500}
+.chips li.key{border-color:var(--accent);box-shadow:inset 4px 0 0 var(--accent)}
+
+/* Contact */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.card{background:var(--surface);border:1px solid var(--line);padding:22px}
+.card h3{font-size:1.5rem;margin-bottom:10px}
+.card p{margin:4px 0}
+.card .sm{color:var(--muted);font-size:.92rem}
+footer{padding:40px 0 48px;color:var(--muted);font-size:.9rem}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="label" role="img" aria-label="Name card: Jay Mark Domingo, Inventory Head Analyst">
+      <div class="label-top">
+        <p class="who">Manila, Philippines</p>
+        <h1>Jay Mark Domingo</h1>
+        <p class="role">Inventory Head Analyst</p>
+      </div>
+      <div class="label-mid">
+        <div><b>700</b><span>SKUs managed</span></div>
+        <div><b>3</b><span>e-commerce platforms</span></div>
+        <div><b>2018</b><span>in warehouse work since</span></div>
+      </div>
+      <div class="barcode" aria-hidden="true"></div>
+    </div>
+    <p class="intro">I keep stock records accurate and warehouses running smoothly, from receiving deliveries to picking online orders and monthly cycle counts.</p>
+    <div class="actions">
+      <a class="btn primary" href="#contact">Contact me</a>
+      <a class="btn ghost" href="#experience">See my experience</a>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Sections">
+  <div class="wrap">
+    <a href="#about">About</a>
+    <a href="#work">What I do</a>
+    <a href="#experience">Experience</a>
+    <a href="#demo">Try a count</a>
+    <a href="#skills">Skills</a>
+    <a href="#contact">Contact</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <section id="about">
+    <h2>About</h2>
+    <p class="lead">I run inventory operations from start to finish: stock-in and stock-out, receiving deliveries, stock reconciliation, and monthly cycle counting. I currently manage 700 SKUs and the e-commerce orders that go with them on Shopee, Lazada, and TikTok. I am organized, detail-oriented, and dependable. I work well on my own and with a team.</p>
+  </section>
+
+  <section id="work">
+    <h2>What I do</h2>
+    <p class="lead">The daily work of keeping inventory correct.</p>
+    <div class="flow">
+      <div><h3>Receive</h3><p>Receive and verify incoming deliveries against orders.</p></div>
+      <div><h3>Record</h3><p>Handle stock-in and stock-out and record daily inventory.</p></div>
+      <div><h3>Fulfill</h3><p>Manage e-commerce orders and prepare picked products for production.</p></div>
+      <div><h3>Reconcile</h3><p>Perform stock reconciliation and monthly cycle counting.</p></div>
+      <div><h3>Report</h3><p>Report overstock and out-of-stock items so stocks get ordered on time.</p></div>
+    </div>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <p class="lead">Newest first.</p>
+    <div class="log">
+      <article class="entry">
+        <div class="when">Dec 2025 to now<small>K Pick Trading Corp.</small></div>
+        <div>
+          <h3>Inventory Head Analyst<span class="now">Current</span></h3>
+          <ul>
+            <li>Manage e-commerce orders on Shopee, Lazada, and TikTok.</li>
+            <li>Handle inventory for 700 SKUs, including stock-in and stock-out.</li>
+            <li>Receive and verify incoming deliveries.</li>
+            <li>Prepare picked products for production.</li>
+            <li>Perform stock reconciliation and monthly cycle counting.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="when">May 2024 to May 2025<small>Omaga Safety Inc., Binondo, Manila</small></div>
+        <div>
+          <h3>Inventory Clerk</h3>
+          <ul>
+            <li>Managed store inventory and sales; recorded daily store inventory.</li>
+            <li>Ordered and received orders from store branches and analyzed store orders.</li>
+            <li>Reported running-out and overstock items; direct-ordered stocks.</li>
+            <li>Maintained a clean warehouse.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="when">Jan 2023 to Oct 2023<small>BVCJW Corporation, Sta. Rosa, Quezon City</small></div>
+        <div>
+          <h3>Inventory Associate</h3>
+          <ul>
+            <li>Recorded daily store inventory and analyzed store orders.</li>
+            <li>Ordered and received orders from store branches; direct-ordered stocks.</li>
+            <li>Reported running-out and overstock items.</li>
+            <li>Monitored daily expiration and condition of stocks.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="entry">
+        <div class="when">Jan 2018 to Dec 2021<small>BF Corporation, EDSA, Quezon City</small></div>
+        <div>
+          <h3>Warehouseman</h3>
+          <ul>
+            <li>Sorted equipment and construction materials.</li>
+            <li>Received and dispatched materials delivered from the manufacturer.</li>
+            <li>Listed and replaced borrowed tools from the work site.</li>
+            <li>Monitored the balance of material quantities.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section id="demo">
+    <h2>Try a cycle count</h2>
+    <p class="lead">This is how I check stock: compare the system count with the physical count, then look at the difference.</p>
+    <div class="count">
+      <p class="note">Sample items for demonstration only. Type a physical count for each row.</p>
+      <div class="scroll">
+        <table>
+          <thead><tr><th>Item</th><th>System count</th><th>Physical count</th><th>Difference</th><th>Result</th></tr></thead>
+          <tbody id="rows"></tbody>
+        </table>
+      </div>
+      <div class="row-actions">
+        <button id="fill" type="button">Fill with sample counts</button>
+        <button id="reset" type="button" class="sec">Clear</button>
+        <span id="summary" role="status" aria-live="polite">Enter counts to see the result.</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <p class="lead">&nbsp;</p>
+    <ul class="chips" style="margin-top:-28px">
+      <li class="key">Inventory management</li>
+      <li class="key">E-commerce order handling</li>
+      <li>Stock reconciliation</li>
+      <li>Cycle counting</li>
+      <li>Excel</li>
+      <li>MS Word</li>
+      <li>PowerPoint</li>
+      <li>Computer literacy</li>
+      <li>Computer hardware maintenance</li>
+      <li>Building maintenance</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p class="lead">Open to inventory and warehouse roles. Send me a message.</p>
+    <div class="two">
+      <div class="card">
+        <h3>Reach me</h3>
+        <p><a href="mailto:mr.jei.maaku@gmail.com">mr.jei.maaku@gmail.com</a></p>
+        <p><a href="tel:+639935121754">0993 512 1754</a></p>
+        <p class="sm">Manila, Philippines</p>
+        <p class="sm">References available on request.</p>
+      </div>
+      <div class="card">
+        <h3>Education and languages</h3>
+        <p><b>Senior High School</b>, 2020<br><span class="sm">Jose Abad Santos Senior High School. Certificate of completion assessment at Informatics College.</span></p>
+        <p><b>Junior High School</b>, 2017<br><span class="sm">Jose Abad Santos High School</span></p>
+        <p class="sm">Languages: English, Tagalog</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">Jay Mark Domingo, Inventory Head Analyst</div>
+</footer>
+
+<script>
+(function(){
+  var items=[
+    {n:"Item A",s:120,f:120},
+    {n:"Item B",s:64,f:61},
+    {n:"Item C",s:200,f:206},
+    {n:"Item D",s:35,f:35}
+  ];
+  var tbody=document.getElementById("rows");
+  var summary=document.getElementById("summary");
+  items.forEach(function(it,i){
+    var tr=document.createElement("tr");
+    tr.innerHTML='<td>'+it.n+'</td><td class="num">'+it.s+'</td>'+
+      '<td><input type="number" min="0" inputmode="numeric" aria-label="Physical count for '+it.n+'" data-i="'+i+'"></td>'+
+      '<td class="num" id="d'+i+'">-</td><td class="status" id="r'+i+'">-</td>';
+    tbody.appendChild(tr);
+  });
+  function update(){
+    var ok=0,over=0,short=0,filled=0;
+    items.forEach(function(it,i){
+      var inp=tbody.querySelector('input[data-i="'+i+'"]');
+      var d=document.getElementById("d"+i),r=document.getElementById("r"+i);
+      if(inp.value===""){d.textContent="-";r.textContent="-";r.className="status";return;}
+      filled++;
+      var diff=Number(inp.value)-it.s;
+      d.textContent=(diff>0?"+":"")+diff;
+      if(diff===0){r.textContent="Match";r.className="status ok";ok++;}
+      else if(diff>0){r.textContent="Overstock";r.className="status over";over++;}
+      else{r.textContent="Short";r.className="status short";short++;}
+    });
+    summary.textContent=filled===0?"Enter counts to see the result.":
+      ok+" matched, "+over+" over, "+short+" short. Differences get reconciled and reported.";
+  }
+  tbody.addEventListener("input",update);
+  document.getElementById("fill").addEventListener("click",function(){
+    items.forEach(function(it,i){tbody.querySelector('input[data-i="'+i+'"]').value=it.f;});update();
+  });
+  document.getElementById("reset").addEventListener("click",function(){
+    tbody.querySelectorAll("input").forEach(function(x){x.value="";});update();
+  });
+})();
+</script>
+</body>
+</html>
