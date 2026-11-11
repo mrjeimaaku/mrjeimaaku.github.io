@@ -118,6 +118,21 @@ input[type=number]{width:84px;padding:8px;font:inherit;background:var(--bg);colo
 .card p{margin:4px 0}
 .card .sm{color:var(--muted);font-size:.92rem}
 footer{padding:40px 0 48px;color:var(--muted);font-size:.9rem}
+/* Projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+.proj{background:var(--surface);border:1px solid var(--line);padding:20px;display:flex;flex-direction:column;gap:10px}
+.proj.feat{grid-column:1/-1;border-left:8px solid var(--accent)}
+.proj h3{font-size:1.5rem}
+.proj .tag{font-size:.8rem;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin:0}
+.proj p{margin:0}
+.proj ul{margin:0;padding-left:18px;color:var(--ink)}
+.proj li{margin:2px 0;font-size:.97rem}
+.proj .sheets{margin-top:auto;padding-top:10px;border-top:1px solid var(--line);font-size:.85rem;color:var(--muted)}
+.cert{display:grid;grid-template-columns:auto 1fr;gap:0 20px;align-items:center;background:var(--surface);border:1px solid var(--line);border-left:8px solid var(--accent);padding:22px}
+.cert .seal{font-family:var(--head);font-size:2.6rem;line-height:1;background:var(--navy);color:#fff;width:72px;height:72px;display:grid;place-items:center;border-radius:50%}
+.cert h3{font-size:1.6rem}
+.cert p{margin:2px 0;color:var(--muted);font-size:.95rem}
+@media (max-width:480px){.cert{grid-template-columns:1fr;gap:12px}}
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
@@ -132,13 +147,13 @@ footer{padding:40px 0 48px;color:var(--muted);font-size:.9rem}
         <p class="role">Inventory Head Analyst</p>
       </div>
       <div class="label-mid">
-        <div><b>700</b><span>SKUs managed</span></div>
-        <div><b>3</b><span>e-commerce platforms</span></div>
+        <div><b>5,000+</b><span>SKUs handled in my career</span></div>
+        <div><b>3</b><span>online platforms</span></div>
         <div><b>2018</b><span>in warehouse work since</span></div>
       </div>
       <div class="barcode" aria-hidden="true"></div>
     </div>
-    <p class="intro">I keep stock records accurate and warehouses running smoothly, from receiving deliveries to picking online orders and monthly cycle counts.</p>
+    <p class="intro">I solve inventory problems, keep stock accurate, and build Excel systems and solutions that make inventory easier to manage.</p>
     <div class="actions">
       <a class="btn primary" href="#contact">Contact me</a>
       <a class="btn ghost" href="#experience">See my experience</a>
@@ -151,8 +166,10 @@ footer{padding:40px 0 48px;color:var(--muted);font-size:.9rem}
     <a href="#about">About</a>
     <a href="#work">What I do</a>
     <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
     <a href="#demo">Try a count</a>
     <a href="#skills">Skills</a>
+    <a href="#certificates">Certificates</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -232,6 +249,117 @@ footer{padding:40px 0 48px;color:var(--muted);font-size:.9rem}
     </div>
   </section>
 
+  <section id="projects">
+    <h2>Excel Projects</h2>
+    <p class="lead">Trackers, dashboards, and reports I built in Excel. Descriptions only; no company data is shown here.</p>
+    <div class="projects">
+
+      <article class="proj feat">
+        <p class="tag">Inventory</p>
+        <h3>Inventory Reconciliation Template</h3>
+        <p>Compares the ERP count against the physical count and shows where stock is over, short, or matching.</p>
+        <ul>
+          <li>Variance in pieces and in the unit of measure (can, pack, box)</li>
+          <li>Status per product: Match, Over, or Short</li>
+          <li>Cost of the variance and loss in PHP and KRW</li>
+          <li>Expiry monitoring per batch with a near-expiry alert</li>
+          <li>Stock adjustment sheet from old count to physical count</li>
+          <li>Dashboard with inventory accuracy against a target, and a printable report per brand</li>
+        </ul>
+        <div class="sheets">Sheets: Dashboard, Reconciliation, Expiry, Adjustment, Print Report</div>
+      </article>
+
+      <article class="proj">
+        <p class="tag">Tracking</p>
+        <h3>Monthly Case Tracker</h3>
+        <p>Records monthly security cases per vessel, with a registry that updates the input grid and dashboards.</p>
+        <ul>
+          <li>Monthly dashboard with breakdown and chart</li>
+          <li>Yearly dashboard with monthly trend</li>
+          <li>History of all saved months</li>
+        </ul>
+        <div class="sheets">Sheets: Registry, Monthly Input, History, Monthly and Yearly Dashboards</div>
+      </article>
+
+      <article class="proj">
+        <p class="tag">Monitoring</p>
+        <h3>Crew Monitoring Tracker</h3>
+        <p>Tracks crew status and briefings with a dashboard and search.</p>
+        <ul>
+          <li>Status updates by itself: Onboard, On Vacation, For Deployment</li>
+          <li>Counts of pending briefings and de-briefings</li>
+          <li>History per person with sign-on and sign-off dates</li>
+          <li>Import of returned forms from a folder</li>
+        </ul>
+        <div class="sheets">Sheets: Dashboard, History, Tracker, Guide, Lists</div>
+      </article>
+
+      <article class="proj">
+        <p class="tag">Compliance</p>
+        <h3>Forms and Checklist Monitoring 2025</h3>
+        <p>Checks every month whether each required form was submitted by each vessel, with a completion percentage per vessel.</p>
+        <ul>
+          <li>Yes or No per form and per vessel</li>
+          <li>A checklist and summary for each month</li>
+          <li>Quarterly view</li>
+        </ul>
+        <div class="sheets">Sheets: 12 monthly checklists and summaries, plus quarterly</div>
+      </article>
+
+      <article class="proj">
+        <p class="tag">Dashboard</p>
+        <h3>Near-Miss Dashboard</h3>
+        <p>Near-miss reporting with a view for the whole fleet and a view for each vessel.</p>
+        <ul>
+          <li>All-vessel dashboard</li>
+          <li>Dashboard per vessel</li>
+          <li>Summary table of each vessel's data</li>
+        </ul>
+        <div class="sheets">Sheets: All Vessel Dashboard, Dashboard per Vessel, Summary, data per vessel</div>
+      </article>
+
+      <article class="proj">
+        <p class="tag">Report</p>
+        <h3>Emission Monitoring Comparison Report</h3>
+        <p>Compares total CO2 emissions for the same period in 2024 and 2025.</p>
+        <ul>
+          <li>Totals for both years</li>
+          <li>Change in tons and in percent</li>
+        </ul>
+      </article>
+
+      <article class="proj">
+        <p class="tag">Form</p>
+        <h3>Cyber Incident Report Form</h3>
+        <p>A formatted incident report form: ship details, status, location, department, and a narrative of what was observed.</p>
+      </article>
+
+      <article class="proj">
+        <p class="tag">Finance</p>
+        <h3>Loan Tracker for Multiple Clients</h3>
+        <p>One summary sheet and one sheet per client.</p>
+        <ul>
+          <li>Loan amount, term, interest, total payable, and monthly payment</li>
+          <li>Amount paid, balance, payment progress, and Active or Paid status</li>
+          <li>Month-by-month schedule with Paid or Overdue</li>
+        </ul>
+        <div class="sheets">Sheets: Summary, Client Template, one per client</div>
+      </article>
+
+      <article class="proj">
+        <p class="tag">Payroll</p>
+        <h3>Payroll System with Auto Payslip</h3>
+        <p>Computes payroll per period and generates a payslip.</p>
+        <ul>
+          <li>Rates for overtime, holidays, rest days, and night differential</li>
+          <li>Setup by position</li>
+        </ul>
+        <div class="sheets">Sheets: Payroll, Payslip, Set Up</div>
+      </article>
+
+    </div>
+  </section>
+
   <section id="demo">
     <h2>Try a cycle count</h2>
     <p class="lead">This is how I check stock: compare the system count with the physical count, then look at the difference.</p>
@@ -257,6 +385,7 @@ footer{padding:40px 0 48px;color:var(--muted);font-size:.9rem}
     <ul class="chips" style="margin-top:-28px">
       <li class="key">Inventory management</li>
       <li class="key">E-commerce order handling</li>
+      <li class="key">Excel dashboards and trackers</li>
       <li>Stock reconciliation</li>
       <li>Cycle counting</li>
       <li>Excel</li>
@@ -266,6 +395,20 @@ footer{padding:40px 0 48px;color:var(--muted);font-size:.9rem}
       <li>Computer hardware maintenance</li>
       <li>Building maintenance</li>
     </ul>
+  </section>
+
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <p class="lead">&nbsp;</p>
+    <div class="cert" style="margin-top:-28px">
+      <div class="seal" aria-hidden="true">SC</div>
+      <div>
+        <h3>Introduction to Supply Chain Management</h3>
+        <p>Simplilearn</p>
+        <p>Issued 14 October 2026</p>
+        <p>Certificate code: 10887177</p>
+      </div>
+    </div>
   </section>
 
   <section id="contact">
